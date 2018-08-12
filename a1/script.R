@@ -28,5 +28,31 @@ barplot(
   main = "Monthly Temperatures At Location C In 1919", 
   xlab = "Months", 
   ylab = "Temperatures", 
-  names.arg = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+  names.arg = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"), 
+  col = 5
+)
+
+legend(
+  "topright", 
+  legend= c("Real", "Imputed"),
+  fill = c(5, 6)
+)
+
+# E1.1.4
+source("http://www.massey.ac.nz/~mhazelto/161223/kNNImpute.R")
+Imputed <- kNNImpute(climate, k = 1)$x
+
+barplot(
+  Imputed[ Imputed$FullYear == 1924 ,]$A.temp, 
+  main = "Monthly Temperatures At Location A In 1924", 
+  xlab = "Months", 
+  ylab = "Temperatures", 
+  names.arg = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"), 
+  col = is.na(climate[ climate$FullYear == 1924 ,]$A.temp)  + 5
+)
+
+legend(
+  "topright", 
+  legend= c("Real", "Imputed"),
+  fill = c(5, 6)
 )
