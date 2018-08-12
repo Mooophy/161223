@@ -59,3 +59,24 @@ legend(
 # E2
 athlete <- read.table(file="http://www.massey.ac.nz/~mhazelto/161223/data/athlete.txt",header=T)
 pairs(athlete, col = (athlete$Sport == "Sprint") + 1)
+
+# E3
+x <- Imputed$C.temp
+y <- Imputed$D.temp
+
+plot(
+    x,
+    y, 
+    xlab = "Temperature at C", 
+    ylab = "Temperature at D",
+    col = (Imputed$Month < 4 | Imputed$Month > 9) * 3 + 2
+)
+  
+smoothingSpline = smooth.spline(x, y, spar = 1)
+lines(smoothingSpline, lwd = 2)
+
+legend(
+  "topleft",
+  legend= c("Summer", "Winter"),
+  fill = c(2, 5)
+)
