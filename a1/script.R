@@ -61,6 +61,10 @@ athlete <- read.table(file="http://www.massey.ac.nz/~mhazelto/161223/data/athlet
 pairs(athlete, col = (athlete$Sport == "Sprint") + 1)
 
 # E3
+par(mar=c(5,4,2,2)+0.1)
+zones <- matrix(c(2,0,1,3), ncol=2, byrow=T)
+layout(zones, widths=c(3,1), heights=c(1,3))
+
 x <- Imputed$C.temp
 y <- Imputed$D.temp
 
@@ -80,3 +84,12 @@ legend(
   legend= c("Summer", "Winter"),
   fill = c(2, 5)
 )
+
+xhist <- hist(x, breaks = 20, plot = F)
+yhist <- hist(y, breaks = 20, plot = F)
+
+par(mar=c(0,4,2,2))
+barplot(xhist$counts, axes=F, space=0, horiz=F)
+
+par(mar=c(5,0,2,2))
+barplot(yhist$counts, axes=F, space=0, horiz=T)
