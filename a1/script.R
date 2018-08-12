@@ -1,6 +1,5 @@
 climate <- read.table(file="http://www.massey.ac.nz/~mhazelto/161223/data/climate.txt", header=T)
 
-# add a new column for full year for later use
 climate["FullYear"] <- climate[, 1] - 1 + 1863
 
 # E1.1.i
@@ -17,12 +16,12 @@ FirstObservationAtB <- head(climate[!is.na(climate$B.temp),], 1)
 FirstObservationAtB$FullYear
 FirstObservationAtB$Month
 
-# E1.1.2
+# E1.2
 # estimates of the mean temperature by month in both locations C and D
 tapply(climate$C.temp, climate$Month, mean)
 tapply(climate$D.temp, climate$Month, mean)
 
-# E1.1.3
+# E1.3
 barplot(
   climate[ climate$FullYear == 1919 ,]$C.temp, 
   main = "Monthly Temperatures At Location C In 1919", 
@@ -38,7 +37,7 @@ legend(
   fill = c(5, 6)
 )
 
-# E1.1.4
+# E1.4
 source("http://www.massey.ac.nz/~mhazelto/161223/kNNImpute.R")
 Imputed <- kNNImpute(climate, k = 1)$x
 
