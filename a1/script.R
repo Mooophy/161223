@@ -23,9 +23,11 @@ tapply(climate$C.temp, climate$Month, mean)
 tapply(climate$D.temp, climate$Month, mean)
 
 # E1.1.3
+# E1.1.3
 barplot(
   climate[ climate$FullYear == 1919 ,]$C.temp, 
   main = "Monthly Temperatures At Location C In 1919", 
-  xlab = "Months", ylab = "Temperatures", 
+  xlab = "Months", 
+  ylab = "Temperatures", 
   names.arg = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 )
