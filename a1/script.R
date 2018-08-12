@@ -15,5 +15,10 @@ FirstObservationAtB <- head(climate[!is.na(climate$B.temp),], 1)
 FirstObservationAtB$Year - 1 + 1863
 LastObservationAtA$Month
 
+# E1.1.2
+# estimates of the mean temperature by month in both locations C and D
+tapply(climate$C.temp, climate$Month, mean)
+tapply(climate$D.temp, climate$Month, mean)
+
 
 barplot(climate[, 5]) # todo: labels + down to 1919
