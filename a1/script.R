@@ -55,3 +55,7 @@ legend(
   legend= c("Real", "Imputed"),
   fill = c(5, 6)
 )
+
+# E2
+athlete <- read.table(file="http://www.massey.ac.nz/~mhazelto/161223/data/athlete.txt",header=T)
+pairs(athlete, col = (athlete$Sport == "Sprint") + 1)
