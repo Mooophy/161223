@@ -1,3 +1,5 @@
+# E1
+
 climate <- read.table(file="http://www.massey.ac.nz/~mhazelto/161223/data/climate.txt", header=T)
 climate["FullYear"] <- climate[, 1] - 1 + 1863
 
